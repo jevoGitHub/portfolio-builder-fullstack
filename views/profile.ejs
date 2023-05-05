@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Portfolio Builder</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+  <button id="start-over" class="trash">Clear Oldest</button>
+
+  <h3>Portfolio Builder</h3>
+  <% for(var i=0; i<messages.length; i++) {%>
+    <header class="primary-header container group">
+      <h3 class="tagline"><span id='current_date'></span></h3>
+      <section>
+        <nav class="nav primary-nav">
+          <ul>
+            <li><a href="#">Home</a></li>
+          </ul>
+        </nav>
+      </section>
+    </header>
+
+    <section class="container hero">
+      <h2>
+        <%= messages[i].name %>'s Portfolio
+      </h2>
+      <p id="msg">
+        <%= messages[i].msg %>
+      </p>
+    </section>
+
+    <section class="row">
+      <div class="grid">
+        <section class="teaser col-1-3">
+          <h5>Project 1</h5>
+          <a href="#">
+            <img src="<%= messages[i].p1_i %>" alt="Placeholder">
+            <h3>
+              <%= messages[i].p1_t %>
+            </h3>
+          </a>
+          <p>
+            <%= messages[i].p1_d %>
+          </p>
+        </section><!--
+            
+                        Project 2
+                        
+                    -->
+        <section class="teaser col-1-3">
+          <h5>Project 2</h5>
+          <a href="#">
+            <img src="<%= messages[i].p2_i %>" alt="Placeholder">
+            <h3>
+              <%= messages[i].p2_t %>
+            </h3>
+          </a>
+          <p>
+            <%= messages[i].p2_d %>
+          </p>
+        </section><!--
+            
+                        Project 3
+                        
+                    -->
+        <section class="teaser col-1-3">
+          <h5>Project 3</h5>
+          <a href="#">
+            <img src="<%= messages[i].p3_i %>" alt="Placeholder">
+            <h3>
+              <%= messages[i].p3_t %>
+            </h3>
+          </a>
+          <p>
+            <%= messages[i].p3_d %>
+          </p>
+        </section>
+      </div>
+    </section>
+    <footer class="primary-footer container group">
+      <small>&copy; <%= messages[i].name %>'s Portfolio</small>
+      <nav class="nav">
+        <ul>
+          <li><a href="#">Home</a></li>
+        </ul>
+      </nav>
+    </footer>
+    <% } %>
+
+      <h2>Add to Template</h2>
+      <% if (user.local.username) { %>
+        <form action="/messages" method="POST">
+          <input type="text" placeholder="Full Name" name="name">
+          <input type="text" placeholder="Portfolio Message" name="msg">
+          <input type="text" placeholder="Project 1 Title" name="p1_t">
+          <input type="text" placeholder="Project 1 Description" name="p1_d">
+          <input type="text" placeholder="Project 1 Image URL" name="p1_i">
+          <input type="text" placeholder="Project 2 Title" name="p2_t">
+          <input type="text" placeholder="Project 2 Description" name="p2_d">
+          <input type="text" placeholder="Project 2 Image URL" name="p2_i">
+          <input type="text" placeholder="Project 3 Title" name="p3_t">
+          <input type="text" placeholder="Project 3 Description" name="p3_d">
+          <input type="text" placeholder="Project 3 Image URL" name="p3_i">
+          <button type="submit">Submit</button>
+        </form>
+        </div>
+        <% } %>
+
+          </div>
+
+          <script src="main.js"></script>
+
+</body>
+
+</html>
